@@ -4,4 +4,5 @@ export class TvShow {
   coverImageUrl: string;
   rating: number;
   description?: string;
+  moodBoard: { title: string; percentage: number }[];
 }

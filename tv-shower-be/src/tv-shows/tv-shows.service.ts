@@ -16,6 +16,16 @@ export class TvShowsService {
       rating: 5,
       description:
         "When self-destructive Vivian discovers the cliffside property she's inherited is a suicide site, she's tasked with becoming its guardian and rescuing lost souls on the verge.",
+      moodBoard: [
+        {
+          title: 'Drama',
+          percentage: 95,
+        },
+        {
+          title: 'Comedy',
+          percentage: 60,
+        },
+      ],
     },
     {
       id: 2,
@@ -23,6 +33,20 @@ export class TvShowsService {
       coverImageUrl:
         'https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@._V1_.jpg',
       rating: 5,
+      moodBoard: [
+        {
+          title: 'Drama',
+          percentage: 75,
+        },
+        {
+          title: 'Adventure',
+          percentage: 90,
+        },
+        {
+          title: 'Comedy',
+          percentage: 70,
+        },
+      ],
       description:
         'Joel and Ellie, a pair connected through the harshness of the world they live in, are forced to endure brutal circumstances and ruthless killers on a trek across a post-outbreak America.Joel and Ellie, a pair connected through the harshness of the world they live in, are forced to endure brutal circumstances and ruthless killers on a trek across a post-outbreak America.',
     },

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TvShowsService } from 'src/app/core/services/tv-shows/tv-shows.service';
 
@@ -26,6 +26,7 @@ export class AddShowComponent {
       nonNullable: true,
       validators: [Validators.maxLength(500)],
     }),
+    moods: new FormArray<FormGroup>([]),
   });
   constructor(private tvShowsService: TvShowsService, private router: Router) {}
 
@@ -33,5 +34,18 @@ export class AddShowComponent {
     this.tvShowsService.addOne(this.form.value as any).subscribe(() => {
       this.router.navigate(['list']);
     });
+  }
+
+  addMood() {
+    this.form.controls.moods.push(
+      new FormGroup({
+        title: new FormControl(''),
+        percentage: new FormControl(0),
+      })
+    );
+  }
+
+  removeMood(index: number) {
+    this.form.controls.moods.removeAt(index);
   }
 }

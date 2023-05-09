@@ -72,6 +72,27 @@
       Your description is too long
     </div>
 
+    <div class="flex flex-col">
+      <label class="text-white pb-2" for="moods">Moods</label>
+      <div
+        *ngFor="let mood of form.controls.moods.controls; index as i"
+        [formGroup]="mood"
+      >
+        <input
+          type="string"
+          class="bg-gray-900 rounded-2xl h-12 p-5 text-white focus:outline-0"
+          formControlName="title"
+        />
+        <input
+          type="number"
+          class="bg-gray-900 rounded-2xl h-12 p-5 text-white focus:outline-0"
+          formControlName="percentage"
+        />
+        <button (click)="removeMood(i)" type="button">X</button>
+      </div>
+      <button (click)="addMood()" type="button">Add</button>
+    </div>
+
     <div class="w-full flex justify-around">
       <button
         class="text-white rounded-2xl bg-gray-900 h-12 py-2 px-5 mt-10 hover:border hover:border-red-900"

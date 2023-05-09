@@ -9,6 +9,11 @@
       <p>
         {{ show.description }}
       </p>
+      <ul>
+        <li *ngFor="let mood of show.moodBoard">
+          {{ mood.title }} - {{ mood.percentage }}
+        </li>
+      </ul>
       <button
         class="text-white rounded-2xl bg-gray-900 h-12 py-2 px-5 mt-10 hover:border hover:border-red-900"
         type="button"
