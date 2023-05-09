@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TvShowsService } from 'src/app/core/services/tv-shows/tv-shows.service';
 
@@ -26,6 +26,7 @@ export class EditShowComponent {
       nonNullable: true,
       validators: [Validators.maxLength(500)],
     }),
+    moods: new FormArray<FormGroup>([]),
   });
 
   id!: number;
@@ -42,6 +43,14 @@ export class EditShowComponent {
       this.form.controls.coverImageUrl.setValue(data.coverImageUrl);
       this.form.controls.rating.setValue(data.rating);
       this.form.controls.description.setValue(data.description || '');
+      data.moods.forEach((mood) => {
+        this.form.controls.moods.push(
+          new FormGroup({
+            title: new FormControl(mood.title),
+            percentage: new FormControl(mood.percentage),
+          })
+        );
+      });
     });
   }
 
@@ -51,5 +60,18 @@ export class EditShowComponent {
       .subscribe(() => {
         this.router.navigate(['list']);
       });
+  }
+
+  addMood() {
+    this.form.controls.moods.push(
+      new FormGroup({
+        title: new FormControl(''),
+        percentage: new FormControl<number | null>(null),
+      })
+    );
+  }
+
+  removeMood(index: number) {
+    this.form.controls.moods.removeAt(index);
   }
 }

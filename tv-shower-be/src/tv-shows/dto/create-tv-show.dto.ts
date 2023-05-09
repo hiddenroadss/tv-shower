@@ -3,5 +3,5 @@ export class CreateTvShowDto {
   coverImageUrl: string;
   rating: number;
   description?: string;
-  moodBoard: { title: string; percentage: number }[];
+  moods: { title: string; percentage: number }[];
 }

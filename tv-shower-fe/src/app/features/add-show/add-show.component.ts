@@ -18,8 +18,7 @@ export class AddShowComponent {
       nonNullable: true,
       validators: [Validators.required],
     }),
-    rating: new FormControl(0, {
-      nonNullable: true,
+    rating: new FormControl<number | null>(null, {
       validators: [Validators.required],
     }),
     description: new FormControl('', {
@@ -29,6 +28,10 @@ export class AddShowComponent {
     moods: new FormArray<FormGroup>([]),
   });
   constructor(private tvShowsService: TvShowsService, private router: Router) {}
+
+  ngOnInit() {
+    this.addMood();
+  }
 
   submit() {
     this.tvShowsService.addOne(this.form.value as any).subscribe(() => {
@@ -40,7 +43,7 @@ export class AddShowComponent {
     this.form.controls.moods.push(
       new FormGroup({
         title: new FormControl(''),
-        percentage: new FormControl(0),
+        percentage: new FormControl<number | null>(null),
       })
     );
   }

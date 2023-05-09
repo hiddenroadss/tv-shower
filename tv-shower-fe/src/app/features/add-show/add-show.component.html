@@ -1,34 +1,34 @@
 <div class="container mx-auto mt-10 border-2 border-slate-900 rounded-2xl p-10">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="flex flex-col">
-      <label class="text-white pb-2" for="title">Name</label>
+      <label class="pb-2" for="title">Name</label>
       <input
         type="text"
         id="title"
-        class="bg-gray-900 rounded-2xl h-12 p-5 text-white focus:outline-0"
+        class="bg-gray-900 rounded-2xl h-12 p-5 focus:outline-0"
         formControlName="title"
       />
     </div>
 
     <div
-      class="p-3 text-white bg-red-800 border-2 border-red-900 rounded-2xl mt-5"
+      class="p-3 bg-red-800 border-2 border-red-900 rounded-2xl mt-5"
       *ngIf="form.get('title')?.errors && form.get('title')?.touched"
     >
       Please enter a title
     </div>
 
     <div class="flex flex-col">
-      <label class="text-white pb-2" for="image">Image URL</label>
+      <label class="pb-2" for="image">Image URL</label>
       <input
         type="text"
         id="image"
-        class="bg-gray-900 rounded-2xl h-12 p-5 text-white focus:outline-0"
+        class="bg-gray-900 rounded-2xl h-12 p-5 focus:outline-0"
         formControlName="coverImageUrl"
       />
     </div>
 
     <div
-      class="p-3 text-white bg-red-800 border-2 border-red-900 rounded-2xl mt-5"
+      class="p-3 bg-red-800 border-2 border-red-900 rounded-2xl mt-5"
       *ngIf="
         form.get('coverImageUrl')?.errors && form.get('coverImageUrl')?.touched
       "
@@ -37,34 +37,34 @@
     </div>
 
     <div class="flex flex-col">
-      <label class="text-white pb-2" for="rating">Rating</label>
+      <label class="pb-2" for="rating">Rating</label>
       <input
         type="number"
         id="rating"
-        class="bg-gray-900 rounded-2xl h-12 p-5 text-white focus:outline-0"
+        class="bg-gray-900 rounded-2xl h-12 p-5 focus:outline-0"
         formControlName="rating"
       />
     </div>
 
     <div
-      class="p-3 text-white bg-red-800 border-2 border-red-900 rounded-2xl mt-5"
+      class="p-3 bg-red-800 border-2 border-red-900 rounded-2xl mt-5"
       *ngIf="form.get('rating')?.errors && form.get('rating')?.touched"
     >
       Please enter a rating
     </div>
 
     <div class="flex flex-col">
-      <label class="text-white pb-2" for="desription">Description</label>
+      <label class="pb-2" for="desription">Description</label>
 
       <textarea
-        class="bg-gray-900 rounded-2xl p-5 text-white focus:outline-0"
+        class="bg-gray-900 rounded-2xl p-5 focus:outline-0"
         formControlName="description"
         id="description"
       ></textarea>
     </div>
 
     <div
-      class="p-3 text-white bg-red-800 border-2 border-red-900 rounded-2xl mt-5"
+      class="p-3 bg-red-800 border-2 border-red-900 rounded-2xl mt-5"
       *ngIf="
         form.get('description')?.errors && form.get('description')?.touched
       "
@@ -72,37 +72,59 @@
       Your description is too long
     </div>
 
-    <div class="flex flex-col">
-      <label class="text-white pb-2" for="moods">Moods</label>
+    <fieldset class="flex flex-col border border-gray-300 rounded-2xl p-4">
+      <legend class="p-2">Moods</legend>
       <div
         *ngFor="let mood of form.controls.moods.controls; index as i"
         [formGroup]="mood"
+        class="flex justify-between gap-4"
       >
-        <input
-          type="string"
-          class="bg-gray-900 rounded-2xl h-12 p-5 text-white focus:outline-0"
-          formControlName="title"
-        />
-        <input
-          type="number"
-          class="bg-gray-900 rounded-2xl h-12 p-5 text-white focus:outline-0"
-          formControlName="percentage"
-        />
-        <button (click)="removeMood(i)" type="button">X</button>
+        <div class="basis-1/3 flex flex-col grow">
+          <label class="pb-2" for="mood-name">Name</label>
+          <input
+            type="string"
+            id="mood-name"
+            class="bg-gray-900 rounded-2xl h-12 p-5 focus:outline-0"
+            formControlName="title"
+          />
+        </div>
+        <div class="basis-1/3 flex flex-col grow">
+          <label class="pb-2" for="mood-perc">Percentage</label>
+
+          <input
+            type="number"
+            id="mood-perc"
+            class="bg-gray-900 rounded-2xl h-12 p-5 focus:outline-0"
+            formControlName="percentage"
+          />
+        </div>
+        <button
+          (click)="removeMood(i)"
+          type="button"
+          class="py-3 px-5 border rounded-2xl self-end hover:border-red-800 hover:text-red-900"
+        >
+          X
+        </button>
       </div>
-      <button (click)="addMood()" type="button">Add</button>
-    </div>
+      <button
+        (click)="addMood()"
+        type="button"
+        class="rounded-2xl bg-gray-900 h-12 py-2 px-5 mt-10 hover:border hover:border-red-900"
+      >
+        Add
+      </button>
+    </fieldset>
 
     <div class="w-full flex justify-around">
       <button
-        class="text-white rounded-2xl bg-gray-900 h-12 py-2 px-5 mt-10 hover:border hover:border-red-900"
+        class="rounded-2xl bg-gray-900 h-12 py-2 px-5 mt-10 hover:border hover:border-red-900"
         type="button"
         routerLink="/list"
       >
         Back
       </button>
       <button
-        class="text-white rounded-2xl bg-gray-900 h-12 py-2 px-5 mt-10 hover:border hover:border-red-900"
+        class="rounded-2xl bg-gray-900 h-12 py-2 px-5 mt-10 hover:border hover:border-red-900"
       >
         Save
       </button>

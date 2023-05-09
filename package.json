@@ -1,0 +1,17 @@
+{
+  "name": "tv-shower",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --names \"Frontend,Backend\" --prefix-colors \"blue.bold,green.bold\" \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "cd tv-shower-fe && ng serve",
+    "start:backend": "cd tv-shower-be && npm run start:dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}

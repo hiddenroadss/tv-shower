@@ -16,7 +16,7 @@ export class TvShowsService {
       rating: 5,
       description:
         "When self-destructive Vivian discovers the cliffside property she's inherited is a suicide site, she's tasked with becoming its guardian and rescuing lost souls on the verge.",
-      moodBoard: [
+      moods: [
         {
           title: 'Drama',
           percentage: 95,
@@ -33,7 +33,7 @@ export class TvShowsService {
       coverImageUrl:
         'https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@._V1_.jpg',
       rating: 5,
-      moodBoard: [
+      moods: [
         {
           title: 'Drama',
           percentage: 75,
